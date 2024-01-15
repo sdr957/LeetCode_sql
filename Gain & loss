@@ -1,0 +1,10 @@
+with tbl_gain as(
+select Stock_name ,
+    case 
+        when operation ='Buy' then -(price)
+        when operation ='sell' then price
+    end as new_price
+    from stocks
+) 
+select Stock_name ,sum(new_price) as capital_gain_loss from tbl_gain
+group by stock_name ;
