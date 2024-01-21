@@ -1,0 +1,3 @@
+select distinct num as ConsecutiveNums from 
+(select * , lead(num) over() as nxt_num ,lead(num,2) over() as 2nd_nxt_num from logs) as n
+where num=nxt_num and nxt_num=2nd_nxt_num;
